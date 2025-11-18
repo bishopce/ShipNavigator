@@ -1,0 +1,47 @@
+//Written by Claire Bishop
+public class Ship {         //Parent Class
+
+	//instance variables
+	private String name;
+	private String launchDate;
+	
+	//accessors
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getLaunchDate() {
+		return this.launchDate;
+	}
+	
+	//mutators - no invalid values for name but will check for the date
+	public void setName(String xName) {
+		this.name = xName;
+	}
+	
+	public void setLaunchDate(String xDate) {
+		
+		//isolating the year
+		String year = xDate.substring(6);
+		
+		//turning the string year into an integer to do numerical comparison
+		int yearInt = Integer.parseInt(year);
+		
+		if(yearInt >= 1990 && yearInt <= 2019) {
+			this.launchDate = xDate;
+		}
+		else {
+			System.out.println("Error: Launch date prior to 1990. Resetting "+this.name+"'s launch date to the default 01/01/1990");
+			this.launchDate = "01/01/1990";
+		}
+	}
+	
+	
+	public String toString() {
+		return "Ship Name: "+this.name+"\nLaunch Date: "+this.launchDate;
+	}
+	
+	
+	
+	
+}
