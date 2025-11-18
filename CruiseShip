@@ -1,0 +1,44 @@
+//Written by Claire Bishop
+public class CruiseShip extends Ship {
+
+	//instance variables
+	private int passengers;
+	private int crew;
+	
+	//accessors
+	public int getPassengers() {
+		return this.passengers;
+	}
+	
+	public int getCrew() {
+		return this.crew;
+	}
+	
+	//mutators - check for invalid values
+	public void setPassengers(int xPassengers) {
+		if(xPassengers > 0) {
+			this.passengers = xPassengers;
+		}
+		else {
+			System.out.println("Invalid value entered for number of passengers!");
+		}
+	}
+	
+	public void setCrew(int xCrew) {
+		if(xCrew > 0) {
+			this.crew = xCrew;
+		}
+		else {
+			System.out.println("Invalid value entered for number of crew members!");
+		}
+	}
+		
+	//overrides other toString()
+	public String toString() {
+		return "Ship Name: "+getName()+"\nPassenger Capacity: "+this.passengers+"\nCrew Capacity: "+this.crew;
+		
+	}
+	
+	
+	
+}
