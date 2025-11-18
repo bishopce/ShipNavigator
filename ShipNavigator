@@ -1,0 +1,83 @@
+//Written by Claire Bishop
+import java.util.Scanner;
+public class ShipNavigator {
+
+	public static void main(String[] args) {
+
+		Scanner key = new Scanner(System.in);
+		
+		//class objects
+		CargoShip cargo = new CargoShip();
+		CruiseShip cruise = new CruiseShip();
+		
+		String answer = "yes";
+		
+		System.out.println("Welcome to ShipNavigator!!");
+		
+		//will run the ship navigator until the user decides to stop running it
+		do {
+			//basic info that all ships will have
+			System.out.println("Enter the name of the ship:");
+			
+			String name = key.nextLine();
+			
+			System.out.println("Enter its launch date (mm/dd/yyyy)");
+			
+			String date = key.nextLine();
+			
+			System.out.println("Is it a cruise ship or a cargo ship?");
+			
+			String ship = key.nextLine();
+			
+			if(ship.equalsIgnoreCase("Cruise Ship")) {
+				
+				cruise.setName(name);
+				
+				//CruiseShip specific elements
+				System.out.println("Enter the ship's passenger capacity: ");
+				cruise.setPassengers(key.nextInt());
+				
+				System.out.println("How many crew members are on this ship?");
+				cruise.setCrew(key.nextInt());
+				
+				System.out.println("Creating a new cruise ship...");
+		
+				//will print out the error message here if applicable, if not will just assign the value
+				cruise.setLaunchDate(date); 
+				
+				System.out.println("Printing the ship's details: ");
+				
+				System.out.println(cruise.toString());
+			}
+			else if(ship.equalsIgnoreCase("Cargo Ship")) {
+				
+				cargo.setName(name);
+				
+				//CargoShip specific elements
+				System.out.println("Enter the ship's tonnage: ");
+				cargo.setTonnage(key.nextDouble());
+				
+				System.out.println("Enter the max speed of the ship (in mph):");
+				cargo.setSpeed(key.nextDouble());
+				
+				System.out.println("Creating a new cruise ship...");
+				
+				//same as above - will print error or assign date
+				cargo.setLaunchDate(date); 
+				
+				System.out.println("Printing the ship's details: ");
+
+				System.out.println(cargo.toString());
+			}
+			
+			System.out.println("Would you like to create another ship object? Enter yes or no: ");
+			
+			answer = key.next();
+			//will read the rest of the line so when the program re-loops it will run correctly
+			key.nextLine();
+		}while(answer.equalsIgnoreCase("yes"));
+		
+		//will print once the user says "no"
+		System.out.println("Goodbye!");
+	}	
+}
